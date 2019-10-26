@@ -1,0 +1,51 @@
+{% extends "cms/cms_base.html" %}
+{% from "common/_macros.html" import static %}
+{% block title %}
+<title>修改密码--校园论坛CMS管理系统</title>
+{% endblock %}
+{% block page_title %}
+<li class="breadcrumb-item active">修改密码</li>
+{% endblock %}
+{% block head %}
+    <style>
+        .mb-3{
+            width: 300px;
+            border: none;
+        }
+    </style>
+    <!-- csrf攻击： 重写Ajax请求 -->
+{#    <script src="{{ static("common/js/jquery-3.4.1.min.js") }}"></script>#}
+{#    <script src="{{ static("common/cpajax.js") }}"></script>#}
+    <script src="{{ url_for("static", filename="cms/js/resetpwd.js") }}"></script>
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="card mb-3">
+        <form action="#" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">旧密码</span>
+                    <input type="password" class="form-control" name="oldpwd" placeholder="请输入旧密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">新密码</span>
+                    <input type="password" class="form-control" name="newpwd" placeholder="请输入新密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">确认新密码</span>
+                    <input type="password" class="form-control" name="newpwd2" placeholder="请输入确认密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" id="submit">立即保存</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

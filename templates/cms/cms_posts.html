@@ -1,0 +1,47 @@
+{% extends "cms/cms_base.html" %}
+
+{% block title %}
+<title>帖子管理--校园论坛CMS管理系统</title>
+{% endblock %}
+
+{% block head %}
+    <script src="{{ url_for("static", filename="cms/js/posts.js") }}"></script>
+{% endblock %}
+
+{% block page_title %}
+<li class="breadcrumb-item active">帖子管理</li>
+{% endblock %}
+
+{% block main_content %}
+<table class="table table-bordered">
+    <thead>
+        <th>标题</th>
+        <th>作者</th>
+        <th>板块</th>
+        <th>发表时间</th>
+        <th>操作</th>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+    <tr data-id="{{ post.id }}" data-highlight="{{ 1 if post.highlight else 0 }}">
+        <td><a href="{{ url_for("front.post_detail", post_id=post.id) }}" target="_blank">{{ post.title }}</a></td>
+        <td>{{ post.author.username }}</td>
+        <td>{{ post.board.name }}</td>
+        <td>{{ post.create_time }}</td>
+        <td>
+            {% if post.highlight %}
+            <button class="btn default highlight-btn" style="width: 90px; height: 30px; font-size: 14px;">取消加精</button>
+            {% else %}
+            <button class="btn default highlight-btn" style="width: 60px; height: 30px; font-size: 14px;">加精</button>
+            {% endif %}
+            <button class="btn btn-danger" style="width: 60px; height: 30px; font-size: 14px;">移除</button>
+        </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<div style="text-align: right">
+    {{ pagination.links }}
+</div>
+{% endblock %}

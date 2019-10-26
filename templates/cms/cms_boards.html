@@ -1,0 +1,52 @@
+{% extends "cms/cms_base.html" %}
+
+{% block title %}
+<title>板块管理--校园论坛CMS管理系统</title>
+{% endblock %}
+
+{% block head %}
+    <style>
+        .top-box{
+            overflow: hidden;
+            background-color: #ecedf0;
+            padding: 10px;
+        }
+        .top-box button{
+            float: right;
+        }
+    </style>
+    <script src="{{ url_for("static", filename="cms/js/boards.js") }}"></script>
+{% endblock %}
+
+{% block page_title %}
+<li class="breadcrumb-item active">板块管理</li>
+{% endblock %}
+
+{% block main_content %}
+<div class="top-box">
+    <button class="btn btn-warning" id="add-board-btn">添加新板块</button>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>板块名称</th>
+            <th>帖子数量</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for board in boards %}
+        <tr data-id="{{ board.id }}" data-name="{{ board.name }}">
+            <td>{{ board.name }}</td>
+            <td>0</td>
+            <td>{{ board.create_time }}</td>
+            <td>
+                <button class="btn btn-default edit-board-btn" style="width: 60px; height: 30px; font-size: 14px;">编辑</button>
+                <button class="btn btn-danger delete-board-btn" style="width: 60px; height: 30px; font-size: 14px;">删除</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

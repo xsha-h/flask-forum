@@ -1,0 +1,38 @@
+{% extends "cms/cms_base.html" %}
+{% from "common/_macros.html" import static %}
+{% block title %}
+<title>修改邮箱--校园论坛CMS管理系统</title>
+{% endblock %}
+{% block page_title %}
+<li class="breadcrumb-item active">修改密码</li>
+{% endblock %}
+{% block head %}
+    <style>
+        .mb-3{
+            width: 300px;
+            border: none;
+        }
+    </style>
+    <!-- csrf攻击： 重写Ajax请求 -->
+    <script src="{{ static("common/js/jquery-3.4.1.min.js") }}"></script>
+    <script src="{{ static("common/cpajax.js") }}"></script>
+    <script src="{{ url_for("static", filename="cms/js/resetemail.js") }}"></script>
+{% endblock %}
+{% block main_content %}
+<div class="card mb-3">
+    <form action="" method="post">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="email" class="form-control" name="email" placeholder="新密码">
+                <span class="input-group-addon" id="captcha-btn" style="cursor: pointer;">获取验证码</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="captcha" placeholder="邮箱验证码">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" id="submit">立即修改</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

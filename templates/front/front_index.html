@@ -1,0 +1,141 @@
+{% extends "front/front_base.html" %}
+
+{% block title %}
+<title>首页——校园论坛</title>
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for("static", filename="front/css/front_index.css") }}">
+    <style>
+    .profile-info{
+        padding: 30px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .profile-info img{
+        margin-top: 20px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        text-align: center;
+    }
+    .profile-info p{
+        text-align: center;
+        margin-top: 10px;
+    }
+    .profile-info button{
+        margin-top: 20px;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="lg-container">
+    <div id="carousel-example-generic" class="carousel slide index-banner" data-ride="carousel">
+      <!-- 指示器 -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+      </ol>
+
+      <!-- 轮播图 -->
+      <div class="carousel-inner" role="listbox">
+        {% for banner in banners %}
+            {% if loop.index0 == 0 %}
+             <div class="item active">
+                <a href="#">
+                    <img src="{{ banner.image_url }}" alt="...">
+                </a>
+            </div>
+            {% else %}
+            <div class="item ">
+                <a href="#">
+                    <img src="{{ banner.image_url }}" alt="...">
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- 左右控制的切换按钮 -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">上一页</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">下一页</span>
+      </a>
+    </div>
+    <div class="post-group">
+        <ul class="post-group-head">
+            <li class="{{ "active" if current_sort == 1 else "" }}"><a href="{{ url_for("front.index", st=1, bd=current_board) }}">最新</a></li>
+            <li class="{{ "active" if current_sort == 2 else "" }}"><a href="{{ url_for("front.index", st=2, bd=current_board) }}">精华帖子</a></li>
+            <li class="{{ "active" if current_sort == 3 else "" }}"><a href="{{ url_for("front.index", st=3, bd=current_board) }}">点赞最多</a></li>
+            <li class="{{ "active" if current_sort == 4 else "" }}"><a href="{{ url_for("front.index", st=4, bd=current_board) }}">评论最多</a></li>
+        </ul>
+        <ul class="post-list-group">
+            {% for post in posts %}
+            <li>
+                <div class="auth-avatar-group">
+                    <img src="{{ post.author.avatar or url_for("static", filename="common/images/avatar.jpg") }}" alt="">
+                </div>
+                <div class="post-info-group">
+                    <p class="post-title">
+                        <a href="{{ url_for("front.post_detail", post_id=post.id) }}">{{ post.title }}</a>
+                        {% if post.highlight %}
+                        <span class="label label-danger">精华帖</span>
+                        {% endif %}
+                    </p>
+                    <p class="post-info">
+                        <span>作者：{{ post.author.username }}</span>
+                        <span>发表时间：{{ post.create_time }}</span>
+                        <span>评论：0</span>
+                        <span>阅读：0</span>
+                    </p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div style="text-align: center">
+            {{ pagination.links }}
+        </div>
+    </div>
+</div>
+<div class="sm-container">
+    <div class="profile-info">
+        <p>
+            <a href="{{ url_for("front.profile") }}"><img src="{{ current_user.avatar or url_for("static", filename="common/images/avatar.jpg") }}" alt=""></a>
+        </p>
+        <p>
+            <span>{{ current_user.username }}</span><br>
+            <span>0积分</span>
+        </p>
+        <p>
+            <a href="{{ url_for("front.profile") }}"><button class="btn btn-warning">Ta的主页</button></a>
+        </p>
+    </div>
+    <div style="padding-bottom: 10px;">
+        <a href="{{ url_for("front.apost") }}" class="btn btn-warning btn-block">发布帖子</a>
+    </div>
+    <div class="list-group">
+        {% if current_board %}
+        <a href="/" class="list-group-item">所有板块</a>
+        {% else %}
+        <a href="/" class="list-group-item active">所有板块</a>
+        {% endif %}
+
+        {% for board in boards %}
+            {% if board.id == current_board %}
+            <a href="{{ url_for("front.index", bd=board.id) }}" class="list-group-item active">{{ board.name }}</a>
+            {% else %}
+            <a href="{{ url_for("front.index", bd=board.id) }}" class="list-group-item">{{ board.name }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

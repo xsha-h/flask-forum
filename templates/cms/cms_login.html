@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>登录--校园论坛CMS管理系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for("static", filename="cms/css/bootstrap.min.css") }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for("static", filename="cms/css/signin.css") }}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">请登录</h2>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="inputEmail" class="sr-only">邮箱：</label>
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="请输入邮箱地址" required autofocus>
+        <label for="inputPassword" class="sr-only">密码：</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="请输入密码" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="remember" value="1"> 记住我
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">立即登录</button>
+      </form>
+        {% if message %}
+            <p style="text-align: center;" class="text-danger">{{ message }}</p>
+        {% endif %}
+    </div> <!-- /container -->
+  </body>
+</html>

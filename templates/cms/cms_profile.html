@@ -1,0 +1,50 @@
+{% extends "cms/cms_base.html" %}
+{% block title %}
+<title>个人信息--校园论坛CMS管理系统</title>
+{% endblock %}
+{% block page_title %}
+<li class="breadcrumb-item active">个人信息</li>
+{% endblock %}
+
+{% block main_content %}
+    <div class="card mb-3">
+        {% set user = current_user %}
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>用户名：</td>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td>角色：</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {{ role.name }}
+                            {% if not loop.last %}，{% endif %}
+                        {% endfor %}
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>权限：</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {{ role.desc }}
+                            {% if not loop.last %}/{% endif %}
+                        {% endfor %}
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>加入时间：</td>
+                    <td>{{ user.join_time }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

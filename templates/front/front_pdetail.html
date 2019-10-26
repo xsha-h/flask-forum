@@ -1,0 +1,61 @@
+{% extends "front/front_base.html" %}
+
+{% block title %}
+<title>{{ post.title }}——校园论坛</title>
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for("static", filename="front/css/front_pdetail.css") }}">
+    <script src="{{ url_for("static", filename="common/jquery-3.4.1.min.js") }}"></script>
+    <script src="{{ url_for("static", filename="common/cpajax.js") }}"></script>
+    <script src="{{ url_for("static", filename="front/js/front_pdetail.js") }}"></script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+{% endblock %}
+{% block body %}
+<div class="lg-container">
+    <div class="post-container">
+        <h2>{{ post.title }}</h2>
+        <p class="post-info-group">
+            <span>发表时间：{{ post.create_time }}</span>
+            <span>作者：{{ post.author.username }}</span>
+            <span>所属板块：{{ post.board.name }}</span>
+            <span>阅读数：{{ post.read_count }}</span>
+            <span>评论数：0</span>
+        </p>
+        <article class="post-content" data-id="{{ post.id }}" id="post-content">
+            {{ post.content|safe }}
+        </article>
+    </div>
+    <div class="comment-group">
+        <h3>评论列表</h3>
+        <ul class="comment-list-group">
+            {% for comment in post.comments %}
+            <li>
+            <div class="avatar-group">
+                <img src="{{ comment.author.avatar or url_for("static", filename="common/images/avatar.jpg") }}"
+                     alt="">
+            </div>
+            <div class="comment-content">
+                <p class="author-info">
+                    <span>{{ comment.author.username }}</span>
+                    <span>{{ comment.create_time }}</span>
+                </p>
+                <p class="comment-txt">
+                    {{ comment.content|safe }}
+                </p>
+            </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="add-comment-group">
+        <h3>发表评论</h3>
+        {{ ckeditor.create(name="content") }}
+        <div class="comment-btn-group">
+            <button class="btn btn-primary" id="comment-btn">发表评论</button>
+        </div>
+    </div>
+</div>
+<div class="sm-container">
+
+</div>
+{% endblock %}
