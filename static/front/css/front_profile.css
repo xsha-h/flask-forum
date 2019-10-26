@@ -1,0 +1,30 @@
+.head{
+    overflow: hidden;
+}
+.head img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    float: left;
+}
+h3{
+    border-bottom: 1px solid #cccccc;
+}
+.lg-container{
+    float: right;
+    margin-top: -80px;
+}
+.lg-container div{
+    padding-left: 30px;
+}
+.lg-container .myinfo{
+
+}
+p{
+    font-size: 18px;
+    padding: 10px;
+}
+.sm-container{
+    float: left;
+}
+
