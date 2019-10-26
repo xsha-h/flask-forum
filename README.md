@@ -28,36 +28,36 @@
 
 前台注册界面：
 
-![1572116390553](C:\Users\xusha\Desktop\flask-forum\readme_images\1572116390553.png)
+![1572116390553](./readme_images/1572116390553.png)
 
 前台登录界面：
 
-![1572116516879](C:\Users\xusha\Desktop\flask-forum\readme_images\1572116516879.png)
+![1572116516879](./readme_images/1572116516879.png)
 
 校园论坛首页：
 
-![1572116590479](C:\Users\xusha\Desktop\flask-forum\readme_images\1572116590479.png)
+![1572116590479](./readme_images/1572116590479.png)
 
 帖子详情页面：
 
-![1572116644648](C:\Users\xusha\Desktop\flask-forum\readme_images\1572116644648.png)
+![1572116644648](./readme_images/1572116644648.png)
 
 帖子发表界面：
 
-![1572116753030](C:\Users\xusha\Desktop\flask-forum\readme_images\1572116753030.png)
+![1572116753030](./readme_images/1572116753030.png)
 
 个人中心页面：
 
-![1572117081428](C:\Users\xusha\Desktop\flask-forum\readme_images\1572117081428.png)
+![1572117081428](./readme_images/1572117081428.png)
 
 后台首页界面：
 
-![1572117190221](C:\Users\xusha\Desktop\flask-forum\readme_images\1572117190221.png)
+![1572117190221](./readme_images/1572117190221.png)
 
 轮播图管理界面：
 
-![1572117236888](C:\Users\xusha\Desktop\flask-forum\readme_images\1572117236888.png)
+![1572117236888](./readme_images/1572117236888.png)
 
 帖子管理界面：
 
-![1572117273457](C:\Users\xusha\Desktop\flask-forum\readme_images\1572117273457.png)
+![1572117273457](./readme_images/1572117273457.png)
