@@ -21,9 +21,9 @@ MAIL_SERVER = "smtp.qq.com"
 MAIL_PORT = 587
 MAIL_USE_TLS = True
 # MAIL_USE_SSL = False
-MAIL_USERNAME = "599663430@qq.com"
+MAIL_USERNAME = "*****@qq.com"
 # 邮箱的授权码
-MAIL_PASSWORD = "fmrlsciykefsbbha"
+MAIL_PASSWORD = "***********"
 MAIL_DEFAULT_SENDER = "599663430@qq.com"
 
 
