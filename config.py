@@ -8,7 +8,7 @@ CKEDITOR_ENABLE_CSRF = True
 
 DEBUG = True
 
-SQLALCHEMY_DATABASE_URI = "mysql://root:123456@127.0.0.1:3306/forum"
+SQLALCHEMY_DATABASE_URI = "mysql://user:password@127.0.0.1:3306/forum"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
@@ -24,7 +24,7 @@ MAIL_USE_TLS = True
 MAIL_USERNAME = "*****@qq.com"
 # 邮箱的授权码
 MAIL_PASSWORD = "***********"
-MAIL_DEFAULT_SENDER = "599663430@qq.com"
+MAIL_DEFAULT_SENDER = "********@qq.com"
 
 
 # Redis数据库配置
