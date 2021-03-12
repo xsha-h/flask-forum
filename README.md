@@ -1,4 +1,4 @@
-# 基于python web 框架Django开发的校园论坛
+# 基于python web 框架Flask开发的校园论坛
 
 项目背景：基于每个学校都有表白墙的思路开发的校园论坛项目
 
