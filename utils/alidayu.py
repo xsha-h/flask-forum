@@ -12,8 +12,8 @@ class Alidayu(object):
     发送配置（都是固定的配置）分别是发送短信的格式、域名、方式、协议、版本
     """
     def __init__(self):
-        self.accessKeyId = "LTAI4FsNT1xcFWWHCGqyTpDW"
-        self.accessSecret = "910uZ41GIX83zZ9n6B1Nh3Wgwo0UHh"
+        self.accessKeyId = ""
+        self.accessSecret = ""
         self.regionId = "cn-shanghai"
         self.client = AcsClient(self.accessKeyId, self.accessSecret, self.regionId)
 
